@@ -40,10 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Scan for fake news button functionality
 document.getElementById('scanBtn').addEventListener('click', () => {
-  if (highlightsDisabled) {
-    highlightsDisabled = false; // Re-enable highlights
-    alert('Fact-checking has been re-enabled for this site.');
-  }
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.tabs.sendMessage(tabs[0].id, { action: 'checkFakeNews'});
+  });
 
   calculateReliabilityScore();
 });
