@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake News Detector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>RealiT</h1>
+
+  <div>
+    <p>Reliability Score: <span id="reliabilityScore">0%</span></p>
+    <div class="progress-bar">
+      <div id="progress" class="progress-fill"></div>
+    </div>
+  </div>
+
+  <button id="scanBtn">Scan for Fake News</button>
+  <button id="disableBtn">Disable Fact-Checking</button>
+  <button id="newsBtn">Find Reliable News</button>
+  <button id="flagBtn">Flag site as fake</button>
+
+
+  <div id="newsResults"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

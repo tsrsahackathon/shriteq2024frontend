@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "RealiT",
+    "version": "1.0",
+    "permissions": [
+      "scripting",
+      "storage",
+      "activeTab"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "css": ["tooltip.css"]
+      }
+    ]
+    
+  }
+  
