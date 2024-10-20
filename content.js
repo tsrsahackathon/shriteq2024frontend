@@ -3,12 +3,7 @@ faStylesheet.rel = 'stylesheet';
 faStylesheet.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
 document.head.appendChild(faStylesheet);
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === 'checkFakeNews') {
-    // Call the function to check for fake news when the message is received
-    checkForFakeNews();
-  }
-});
+const fakeNewsKeywords = ["fake news", "clickbait", "rumor", "hoax", "conspiracy", "unverified"];
 
 function checkIfFactCheckingIsDisabled() {
   const currentSite = window.location.hostname;
@@ -17,12 +12,12 @@ function checkIfFactCheckingIsDisabled() {
       console.log('Fact-checking is disabled for this site.');
       removeUnderlines();
     } else {
-      checkForFakeNews();
+      underlineFakeNews();
     }
   });
 }
 
-/*function underlineFakeNews() {
+function underlineFakeNews() {
   const elements = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, span");
 
   elements.forEach((element) => {
@@ -36,44 +31,6 @@ function checkIfFactCheckingIsDisabled() {
     });
   });
 }
-  */
-
-async function checkForFakeNews() {
-  const elements = document.querySelectorAll("p:visible, h1:visible, h2:visible, h3:visible, h4:visible, h5:visible, h6:visible");
-
-  for (const element of elements) {
-      const text = element.innerText.trim();
-      
-      if (text.length > 0 && element.offsetParent !== null) {
-        console.log(text)
-          try {
-              const response = await fetch('http://127.0.0.1:5000/check_fake_news', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({ text: text }) 
-              });
-
-              if (!response.ok) {
-                  const error = await response.json();
-                  console.error('Error:', error);  // Log error
-                  continue;  // Skip to the next element if there's an error
-              }
-
-              const result = await response.json();
-
-              if (result.is_fake_news) {
-                  element.style.textDecoration = 'underline wavy red';
-              }
-          } catch (error) {
-              console.error('Fetch error:', error);
-          }
-      }
-  }
-}
-
-
 
 checkIfFactCheckingIsDisabled();
 
@@ -288,4 +245,3 @@ function removeAllUnderlines() {
 }
 
 checkIfSiteIsFlaggedAsFake();
-
