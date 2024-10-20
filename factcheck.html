@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fact Checker Tool</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #741c3c, #822047);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container Styling */
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  background-color: white;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Card Elements */
+.card {
+  text-align: center;
+}
+
+.title {
+  font-size: 28px;
+  color: #822047;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #495057;
+  margin-bottom: 20px;
+}
+
+/* Input Field Styling */
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #822047;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #40916c;
+}
+
+/* Button Styling */
+.check-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #822047;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-btn i {
+  margin-right: 8px;
+}
+
+.check-btn:hover {
+  background-color: #822047;
+  transform: scale(1.05);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 12px 100px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #822047;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.custom-file-upload:hover {
+  background-color: #52142c;
+}
+
+.custom-file-upload i {
+  margin-right: 8px;
+}
+.button-container {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.cta-btn {
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+
+</style>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1 class="title">Fact Checker</h1>
+      <p class="subtitle">Enter text below to verify its reliability.</p>
+      <textarea type="text" id="textInput" name="textInput" rows="6" cols="42">Paste or enter your text here...</textarea>
+      <p class="subtitle" style="text-align: center; size:10px;">OR</p>
+      <div class="file-upload-container">
+        <form action="/action_page.php">
+          <label for="myFile" class="custom-file-upload">
+            <i class="fas fa-upload"></i> Choose File
+          </label>
+          <input type="file" id="myFile" name="filename">
+        </form>
+      </div>
+      <br>
+      <div class="button-container">
+        <a href="loggedinmain.html" class="cta-btn" style="background-color: #822047; color: white;">Go Back Home</a>
+        <a href="result.html" class="cta-btn" style="background-color: #822047; color: white;">
+          <i class="fas fa-search"></i> Check Reliability
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>

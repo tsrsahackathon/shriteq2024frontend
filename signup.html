@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up | Reliability Checker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #741c3c, #822047);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-container {
+  width: 400px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 28px;
+  color: #333;
+}
+
+p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+input[type="email"], 
+input[type="password"],
+input[type="text"]{
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+  border-color: #52142c;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #52142c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #822047;
+}
+
+.signup-text {
+  margin-top: 20px;
+}
+
+.signup-text a {
+  color: #2193b0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <main>
+      <h2>Create Your Account</h2>
+      <p>Sign up to start using Reliability Checker</p>
+      <form id="signupForm">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+        <button type="submit">Sign Up</button>
+      </form>
+      <br><br>
+      <p class="login-text">
+        Already have an account? <a href="login.html">Log in here</a>.
+      </p>
+    </main>
+  </div>
+
+  <script>
+document.getElementById('signupForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+
+  if (password !== confirmPassword) {
+    alert('Passwords do not match!');
+  } else {
+    alert('Account successfully created!');
+    window.location.href = 'main.html';
+  }
+});
+
+  </script>
+</body>
+</html>
